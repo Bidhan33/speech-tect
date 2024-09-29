@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import TranscriptionDisplay from './TranscriptionDisplay';
+import QuestionsA from './questionsA';
 
 const TranscriptionApp = () => {
   const [transcript, setTranscript] = useState("");
@@ -8,13 +9,11 @@ const TranscriptionApp = () => {
   const recognitionRef = useRef(null);
 
   useEffect(() => {
-    // Check if the browser supports SpeechRecognition
     if (!('webkitSpeechRecognition' in window)) {
       alert("Your browser does not support speech recognition. Please try Chrome or a supported browser.");
       return;
     } 
 
-    // Initialize recognition and save it in ref
     recognitionRef.current = new window.webkitSpeechRecognition();
     const recognition = recognitionRef.current;
 
@@ -22,7 +21,6 @@ const TranscriptionApp = () => {
     recognition.interimResults = true;
     recognition.lang = 'en-US';
 
-    // When recognition gets result
     recognition.onresult = (event) => {
       let interimTranscript = '';
       for (let i = event.resultIndex; i < event.results.length; i++) {
@@ -42,21 +40,21 @@ const TranscriptionApp = () => {
 
     recognition.onend = () => {
       console.log("Speech recognition service disconnected");
-      setIsRecording(false); // Update recording state when recognition ends
+      setIsRecording(false);
     };
   }, []);
 
   const toggleRecording = () => {
-    const recognition = recognitionRef.current; // Get recognition from ref
+    const recognition = recognitionRef.current;
     if (isRecording) {
       recognition.stop();
       console.log("Stopped recording");
     } else {
-      setTranscript(""); // Clear previous transcript
+      setTranscript("");
       recognition.start();
       console.log("Started recording");
     }
-    setIsRecording(!isRecording); // Toggle recording state
+    setIsRecording(!isRecording);
   };
 
   return (
@@ -71,6 +69,7 @@ const TranscriptionApp = () => {
         {isRecording ? "Stop Transcribing" : "Start Transcribing"}
       </motion.button>
       <TranscriptionDisplay transcript={transcript} />
+      <QuestionsA transcript={transcript} />
     </div>
   );
 };
