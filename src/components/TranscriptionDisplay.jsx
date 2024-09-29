@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import './TranscriptionDisplay.css'; // Make sure to create this CSS file or add these styles to your main CSS
+import "../styles/TranscriptionDisplay.css"; // Adjust the path to point to the styles folder
+// Make sure to create this CSS file or add these styles to your main CSS
 
 const TranscriptionDisplay = ({ transcript }) => {
   return (

@@ -1,24 +1,18 @@
-/* styles/TranscriptionDisplay.css */
 .transcription-display {
-    text-align: center;
-    margin: 20px auto;
-    max-width: 600px;
+    border: 1px solid #ccc;
     padding: 20px;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
-  .transcription-box {
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    padding: 15px;
-    margin-top: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    height: 150px;
+  .transcription-display h2 {
+    margin: 0 0 10px;
   }
   
-  .transcription-box p {
-    font-size: 16px;
+  .transcription-display p {
+    font-size: 1.2em;
     color: #333;
-    white-space: pre-wrap;
   }
   
